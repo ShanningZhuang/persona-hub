@@ -230,3 +230,44 @@ Note:
 2. Your NPC description should be specific and consistent with the game.
 3. You also need to specify how the NPC interacts with players in the game.
 '''
+
+questionnaire_template = '''Please fill out the following questionnaire based on your persona:
+
+{persona}
+'''
+
+questionnaire_note = '''
+Note:
+1. Each question will be presented in JSONL format with an id, question text, and multiple options
+2. Choose the most appropriate option(s) that match your persona's background and experiences
+3. If selecting the option with "[fill-in]", provide a specific fill-in response
+
+Example format:
+{"id": 1, "question": "What is your primary purpose for using AI tools?", "options": [{"a": "Research assistance"}, {"b": "Content creation"}, {"c": "Data analysis"}, {"d": "Code generation"}, {"e": "Others [fill-in]"}]}
+
+Your response should the answer of the question that best match your persona.
+Output format:
+{"id": question number, "question": "question text", "answer": "option letter like a, b, c, d, e (if not specified multiple options, just select one, if specified multiple options, you can select one or more)", "fill-in": "fill-in response if you choose the option with "[fill-in]""}
+Your should only return this kind of jsonl format without other words.
+
+The questionnaire is as follows in jsonl format:
+'''
+
+questionnaire_josnl = '''{"id": 0, "question": "Your major (better if you would like to provide your research interest, but not necessary).", "type": "text", "options": []}
+{"id": 1, "question": "According to your major and research interest, list the most important 3 points that you can be benefited from ChatGPT. If your field is more traditional like humanities, mathematics, or physics, ChatGPT might be less helpful to you, and you may use it less frequently. However, if your field is more emerging like artificial intelligence or automation, ChatGPT can help you more, and you're likely to use it more frequently. Notice that this can significantly affect your answer of the following questions.", "type": "text", "options": []}
+{"id": 2, "question": "How did you first encounter ChatGPT?", "options": [{"a": "I work on similar fields"}, {"b": "Through social media"}, {"c": "Through friends or colleagues"}, {"d": "Through online news or articles"}, {"e": "Through academic or work-related discussions"}, {"f": "By other means [fill-in]"}, {"g": "I have never heard of it, nor its developer"}]}
+{"id": 3, "question": "How often do you currently use ChatGPT?", "options": [{"a": "Daily"}, {"b": "Several times per week"}, {"c": "Weekly"}, {"d": "Just in case of need"}, {"e": "Tried previously, but not anymore for now"}]}
+{"id": 4, "question": "What was your purpose for using ChatGPT the last time?", "options": [{"a": "Work-related task"}, {"b": "Study or academic task"}, {"c": "Personal interest or fun"}, {"d": "Information catch-up"}, {"e": "I don't remember"}]}
+{"id": 5, "question": "Do you frequently use ChatGPT for work or study purposes?", "options": [{"a": "Yes, regularly"}, {"b": "Yes, but just occasionally"}, {"c": "No, not/barely for such purposes"}]}
+{"id": 6, "question": "In your recent work or study tasks, what were your demands for using ChatGPT?(multiple options can be selected)", "options": [{"a": "Gathering information"}, {"b": "Getting inspirations"}, {"c": "Organizing ideas"}, {"d": "Summarizing content"}, {"e": "Polishing text"}, {"f": "Translating between languages"}, {"g": "Others [fill-in]"}]}
+{"id": 7, "question": "If you are answering this questionnaire with acute attention, please select the third option.", "options": [{"a": "Once"}, {"b": "Several times"}, {"c": "Nearly every time"}, {"d": "Never / at a low frequency"}]}
+{"id": 8, "question": "Do you feel that ChatGPT always fully understand your question/demands?", "options": [{"a": "Yes, all the time"}, {"b": "Usually, except occasional misunderstanding"}, {"c": "Sometimes"}, {"d": "Not really, it behaves terribly"}]}
+{"id": 9, "question": "Do you think ChatGPT always generate proper answers as you wish?", "options": [{"a": "Yes, absolutely"}, {"b": "Yes, but there exists exceptions"}, {"c": "Just so so"}, {"d": "No / It just seems to generate response randomly"}]}
+{"id": 10, "question": "During your past experiences, do you think ChatGPT met your needs?", "options": [{"a": "Yes, it exceeded my expectations"}, {"b": "It just met most of my expectations"}, {"c": "Somewhat, but not completely"}, {"d": "No, not at all"}]}
+{"id": 11, "question": "To what extent do you think ChatGPT helps improve your work or study efficiency?", "options": [{"a": "It significantly improves my efficiency"}, {"b": "It helps to some extent"}, {"c": "It has minimal effect on my efficiency but does offer assistance"}, {"d": "It doesn't help at all"}]}
+{"id": 12, "question": "To what extent do you think ChatGPT can improve your work or study output?", "options": [{"a": "It can greatly improve my output"}, {"b": "It can somewhat help my output"}, {"c": "It has little effect on my output"}, {"d": "It has nothing to do with my output"}]}
+{"id": 13, "question": "Do you think the time spent using ChatGPT is worth the benefits gained?", "options": [{"a": "Yes, absolutely"}, {"b": "Yes, most of the time"}, {"c": "Not really"}, {"d": "No, it's not worth it"}]}
+{"id": 14, "question": "Compared to works without ChatGPT assistance, are ChatGPT promoting your ability to solve tasks?", "options": [{"a": "Yes, I feel my ability promoted even when I am not using ChatGPT"}, {"b": "Yes, but limited in most cases"}, {"c": "Not really"}, {"d": "I am afraid that it has negative impacts"}, {"e": "None of above [fill-in]"}]}
+{"id": 15, "question": "Compared to works without ChatGPT assistance, are ChatGPT promoting your creativity?", "options": [{"a": "Yes, I feel my creativity promoted even when I am not using ChatGPT"}, {"b": "Yes, but limited in most cases"}, {"c": "Not really"}, {"d": "I am afraid that it has negative impacts"}, {"e": "None of above [fill-in]"}]}
+{"id": 16, "question": "In your field, do you think others' views on ChatGPT's impact on work efficiency are similar to your own?", "options": [{"a": "Yes, most people would agree with me"}, {"b": "I hold the confidence that some will certainly agree"}, {"c": "It depends"}, {"d": "I don't know what others think"}, {"e": "No, I am afraid I am just representing myself"}]}
+{"id": 17, "question": "If you are willing to contact us and provide further information, please leave your contact details.", "options": [{"a": "Yes, I am willing to [fill-in]"}, {"b": "No, thanks"}, {"c": "I need more information [fill-in]"}]}'''
